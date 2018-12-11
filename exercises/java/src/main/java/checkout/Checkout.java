@@ -10,28 +10,16 @@ class Checkout {
 
     void scan(String sku) {
         if ("A".equals(sku)) {
-            total += 50;
-            if (++numberOfA % 5 == 0) {
-                total -= 30;
-            }
+            scanItem(50, ++numberOfA, 5, 30);
             receipt.scannedA();
         } else if ("B".equals(sku)) {
-            total += 30;
-            if (++numberOfB % 2 == 0) {
-                total -= 15;
-            }
+            scanItem(30, ++numberOfB, 2, 15);
             receipt.scannedB();
         } else if ("C".equals(sku)) {
-            total += 20;
-            if (++numberOfC % 4 == 0) {
-                total -= 10;
-            }
+            scanItem(20, ++numberOfC, 4, 10);
             receipt.scannedC();
         } else if ("D".equals(sku)) {
-            total += 15;
-            if (++numberOfD % 5 == 0) {
-                total -= 15;
-            }
+            scanItem(15, ++numberOfD, 5, 15);
             receipt.scannedD();
         }
     }
@@ -42,5 +30,12 @@ class Checkout {
 
     String receipt() {
         return receipt.text();
+    }
+
+    private void scanItem(int price, int numberScanned, int discountQuantity, int discountValue) {
+        total += price;
+        if (numberScanned % discountQuantity == 0) {
+            total -= discountValue;
+        }
     }
 }
