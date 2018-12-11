@@ -10,18 +10,18 @@ class Thingy {
     private int foobar = new int[]{0, 0, 0, 0, 0}.length;
 
     String doTheThing() {
-        String s = "";
-        for (; foo < Byte.MAX_VALUE - 27; foo++) s += b(foo) + " ";
-        return s.substring(0, s.length() - 1);
+        String myString = "";
+        for (; foo < Byte.MAX_VALUE - 27; foo++) myString += b(foo) + " ";
+        return myString.substring(0, myString.length() - 1);
     }
 
     private String b(int foo) {
         bar++;
         foobar--;
-        String s = bar == 0b11 || foobar == 0 ? "" : String.valueOf(foo + 1);
-        if (bar == 0b11) s += bar();
-        if (foobar == 0) s += foo();
-        return s;
+        String myString = bar == 0b11 || foobar == 0 ? "" : String.valueOf(foo + 1);
+        if (bar == 0b11) myString += bar();
+        if (foobar == 0) myString += foo();
+        return myString;
     }
 
     private String foo() {
