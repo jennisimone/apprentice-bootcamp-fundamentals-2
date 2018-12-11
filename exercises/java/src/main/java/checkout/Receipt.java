@@ -14,46 +14,29 @@ class Receipt {
     }
 
     void scannedA() {
-        text += "A: 50";
-        if (++numberOfA % 5 == 0) {
-            text += " - 30 (5 for 220)";
-            total += 20;
-        } else {
-            total += 50;
-        }
-        text += "\n";
+        scannedItem("A", 50, ++numberOfA, 5, 220);
     }
 
     void scannedB() {
-        text += "B: 30";
-        if (++numberOfB % 2 == 0) {
-            text += " - 15 (2 for 45)";
-            total += 15;
-        } else {
-            total += 30;
-        }
-        text += "\n";
+        scannedItem("B", 30, ++numberOfB, 2, 45);
     }
 
     void scannedC() {
-        text += "C: 20";
-        if (++numberOfC % 4 == 0) {
-            text += " - 10 (4 for 70)";
-            total += 10;
-        } else {
-            total += 20;
-        }
-        text += "\n";
+        scannedItem("C", 20, ++numberOfC, 4, 70);
     }
 
     void scannedD() {
-        text += "D: 15";
-        if (++numberOfD % 5 == 0) {
-            text += " - 15 (5 for 60)";
-            total += 0;
-        } else {
-            total += 15;
+        scannedItem("D", 15, ++numberOfD, 5, 60);
+    }
+
+    private void scannedItem(String itemName, int price, int numberScanned, int numberOfItems, int discountedAmount) {
+        int discount =  price * numberOfItems - discountedAmount;
+        text += itemName + ": " + price;
+        if (numberScanned % numberOfItems == 0) {
+            text += " - " + discount + " (" + numberOfItems + " for " + discountedAmount + ")";
+            this.total -= discount;
         }
+        total += price;
         text += "\n";
     }
 }
