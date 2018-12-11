@@ -1,11 +1,11 @@
 package checkout;
 
-public class Receipt {
+class Receipt {
 
     private String text = "";
-    private int aCountdown = 3;
+    private int numberOfA = 0;
+    private int numberOfB = 0;
     private int total;
-    private int bCountdown = 2;
 
     String text() {
         return text + "Total: " + total;
@@ -13,7 +13,7 @@ public class Receipt {
 
     void scannedA() {
         text += "A: 50";
-        if (--aCountdown == 0) {
+        if (++numberOfA % 3 == 0) {
             text += " - 20 (3 for 130)";
             total += 30;
         }
@@ -25,7 +25,7 @@ public class Receipt {
 
     void scannedB() {
         text += "B: 30";
-        if (--bCountdown == 0) {
+        if (++numberOfB % 2 == 0) {
             text += " - 15 (2 for 45)";
             total += 15;
         }

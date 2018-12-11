@@ -8,7 +8,15 @@
 
 Note: Retrospect on day one  
   What did you like  
-  WHat didn’t you like?  
+  What didn’t you like?  
+
+---
+
+# Run all tests at each stage
+
+Note: Observation from yesterday  
+  Some of you are running one test each time  
+  Run all tests to make sure you don’t introduce regressions  
 
 ---
 

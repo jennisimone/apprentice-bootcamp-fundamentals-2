@@ -96,29 +96,36 @@ Note: It is usually unintentional
 
 ---
 
-# Exercise (45 mins)
+# Exercise (20–30 mins)
 
-Pair up to make following changes. Ensure Receipt is correct. **Try to make each change before removing duplication.**
+Aim is to experience problems of duplication.  
+
+Rules:
+
+* Only change functionality with a failing test
+* Run **all** tests after each change
 
 -[+] Change Checkout so that 5 ‘A’ now cost 220  
-  (remember to check that Receipt still works)
--[+] Change it so that you can have 4 ‘C’ for 70
--[+] Change it so that you can have 5 ‘D’ for 60
--[+] ‘A’ = Apple, ‘B’ = Banana, ‘C’ = Cherry, ‘D’ = Damson
--[+] Drought! Bananas double in price, no longer on offer
+  Be sure to check and update ReceiptTest.offers()
+-[+] Extension: 4 ‘C’ for 70, 5 ‘D’ for 60
 
-Note: In this case duplication is intentional  
-  Reveal requirements with a few minutes inbetween
+Note: Make sure they pair up  
+  Ask them to note down duplication they find  
+  No need to remove duplication this time  
+  Consider skipping to review after 20 minutes  
 
 ---
 
-# Show and tell
+# Review
 
--[+] What made making these changes hard?
--[+] How did you remove the duplication?
--[+] Did you introduce any more duplication?
+-[+] What made that harder?
+-[+] Did you change the amount of duplication?
 
-Note: Solution may include Item class, Offers class, print offer method   
+Note: 
+  Had to change 21 lines to make the change to A’s offer  
+  First offer impacts three tests  
+  Change to tests harder due to multiple assertions  
+  Show them the change?  
 
 ---
 
@@ -136,10 +143,9 @@ Note: Solution may include Item class, Offers class, print offer method
     }
 ```
 What duplication did we find?
--[+] Names
+-[+] Product names
 -[+] Costs
--[+] Offer mechanism
--[+] Offer specification
+-[+] Offer trigger & configuration
 -[+] Formatting
 
 Note: Names in methods, Strings, variables  
@@ -168,4 +174,34 @@ Note: Names in methods, Strings, variables
 -[+] Tests not necessarily duplication
 -[+] Offers were tested twice
 
-Note: Mention that tests are declarative, explain declarative
+Note: Mention that tests are declarative, explain declarative  
+
+---
+
+# Exercise
+
+Remove the duplication of the receipt format. You are free to improve the format, but remember that changes to the format will need to be reflected in the tests.
+
+---
+
+# Review
+
+Before:
+```java
+            text += " - 20 (3 for 130)";
+…
+            text += " - 15 (2 for 45)";
+```
+
+After:
+```java
+  void printDiscount(int discountAmount, int numberOfItems, int priceOfItems) {
+      this.text += String.format(
+                      " - %s (%s for %s)",
+                      discountAmount,
+                      numberOfItems,
+                      priceOfItems);
+  }
+```
+
+Note: Demonstrate refactor if there’s time?  
